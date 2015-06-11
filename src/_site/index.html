@@ -19,6 +19,13 @@
         var position = view.center;
         var lastAngle = 180;
         var frames = 0;
+        var score = 0;
+
+        var txt = new PointText(new Point(200, 50));
+        txt.content = "Score: 0";
+        txt.fillColor = "white";
+        txt.fontSize = "1em";
+
         function onFrame(event) {
             position += (mousePos - position) / 10;
             var vector = (view.center - position) / 10;
@@ -27,8 +34,13 @@
             frames++;
             if(frames > 60){
                 frames = 0;
-                whap.visible = false;
+                if( whap.visible ){
+                    whap.visible = false;
+                    score = score + 1;
+                    txt.content = "Score: " + score;
+                }
             }
+            txt.position = new Point(200,50);
         }
 
         function onMouseMove(event) {
@@ -36,6 +48,29 @@
         }
 
         function onKeyDown(event) {
+        }
+
+        function keepInView(item) {
+            var position = item.position;
+            var viewBounds = view.bounds;
+            if (position.isInside(viewBounds))
+                return;
+            var itemBounds = item.bounds;
+            if (position.x > viewBounds.width + 5) {
+                position.x = -item.bounds.width;
+            }
+
+            if (position.x < -itemBounds.width - 5) {
+                position.x = viewBounds.width;
+            }
+
+            if (position.y > viewBounds.height + 5) {
+                position.y = -itemBounds.height;
+            }
+
+            if (position.y < -itemBounds.height - 5) {
+                position.y = viewBounds.height
+            }
         }
 
         var earthImg = new Raster('earth');
@@ -82,28 +117,6 @@
                 length: 0
             });
 
-            function keepInView(item) {
-                var position = item.position;
-                var viewBounds = view.bounds;
-                if (position.isInside(viewBounds))
-                    return;
-                var itemBounds = item.bounds;
-                if (position.x > viewBounds.width + 5) {
-                    position.x = -item.bounds.width;
-                }
-
-                if (position.x < -itemBounds.width - 5) {
-                    position.x = viewBounds.width;
-                }
-
-                if (position.y > viewBounds.height + 5) {
-                    position.y = -itemBounds.height;
-                }
-
-                if (position.y < -itemBounds.height - 5) {
-                    position.y = viewBounds.height
-                }
-            }
 
             return function(vector) {
                 // Run through the active layer's children list and change
