@@ -9,6 +9,7 @@ title: Home
     <script type="text/paperscript" canvas="canvas">
         var mousePos = view.center + [view.bounds.width / 3, 100];
         var position = view.center;
+        var lastAngle = 180;
 
         function onFrame(event) {
             position += (mousePos - position) / 10;
@@ -135,6 +136,9 @@ title: Home
                     }
                     path.smooth();
                 }
+
+                raster.rotate(rotated.angle - lastAngle);
+                lastAngle = rotated.angle;
             }
         }
     </script>
