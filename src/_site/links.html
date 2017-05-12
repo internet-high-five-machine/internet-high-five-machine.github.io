@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>The Internet High 5 Machine Blog - Home</title>
+        <title>The Internet High 5 Machine Blog - links</title>
         <link rel="stylesheet" type="text/css" href="./css/default.css" />
         <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         </head>
@@ -20,25 +20,35 @@
         </div>
 
         <div id="content">
-            <h2>Home</h2>
+            <h2>links</h2>
 
-            This is the official blog of the Internet High 5 Machine!
-
-<h2>Recent posts</h2>
-<ul>
-    
-        
-            <li>
-                <a href="./posts/2017-05-12-your-first-internet-high-5-with-the-uarm.html">Your first Internet High 5 with the uArm Swift!</a> - May 12, 2017
-            </li>
-        
-    
-</ul>
+            <script type="text/javascript" src="./js/rhill-voronoi-core.js"></script>
+<script type="text/javascript" src="./js/seedrandom-min.js"></script>
+<script type="text/javascript" src="./js/QuadTree.js"></script>
+<script type="text/javascript" src="./js/voronoi_links.js"></script>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<style type="text/css">
+    #canvasParent {margin-top:0;margin-bottom:1em;padding:0;border:0}
+    #voronoiCode {font:11px monospace;overflow:auto;color:#666;}
+    #voronoiCode span {color:green;font-weight:bold;}
+</style>
 
 
-<p>…or you can find more in the <a href="./archive.html">archives</a>.
+Links to a few websites that I like, arranged in a Voronoi diagram courtesy
+of some very lazy hacking of <a href="https://github.com/gorhill/Javascript-Voronoi">Javascript-Voronoi</a>.
 
-<br style="clear: both;" />
+<script type="text/javascript">
+    $(document).ready(function (){
+        VoronoiLinks.init();
+    });
+</script>
+
+<center>
+<div id="canvasParent">
+    <canvas id="voronoiCanvas" width="800" height="600" style="cursor: pointer" border="0" onclick="VoronoiLinks.arbitraryAction(event);" onmousemove="VoronoiLinks.updateInformation(event);"></canvas>	
+    </div>
+    <div id="voronoiCellid">&nbsp;</div>
+</center>
 
         </div>
         <div id="footer">

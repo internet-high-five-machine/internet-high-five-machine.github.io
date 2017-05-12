@@ -1,0 +1,30 @@
+<script type="text/javascript" src="/js/rhill-voronoi-core.js"></script>
+<script type="text/javascript" src="/js/seedrandom-min.js"></script>
+<script type="text/javascript" src="/js/QuadTree.js"></script>
+<script type="text/javascript" src="/js/voronoi_links.js"></script>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<style type="text/css">
+    #canvasParent {margin-top:0;margin-bottom:1em;padding:0;border:0}
+    #voronoiCode {font:11px monospace;overflow:auto;color:#666;}
+    #voronoiCode span {color:green;font-weight:bold;}
+</style>
+
+
+Links to a few websites that I like, arranged in a Voronoi diagram courtesy
+of some very lazy hacking of <a 
+    href="https://github.com/gorhill/Javascript-Voronoi">Javascript-Voronoi</a>.
+
+<script type="text/javascript">
+    $$(document).ready(function (){
+        VoronoiLinks.init();
+    });
+</script>
+
+<center>
+<div id="canvasParent">
+    <canvas id="voronoiCanvas" width="800" height="600" style="cursor: pointer"
+        border="0" onclick="VoronoiLinks.arbitraryAction(event);"
+        onmousemove="VoronoiLinks.updateInformation(event);"></canvas>	
+    </div>
+    <div id="voronoiCellid">&nbsp;</div>
+</center>

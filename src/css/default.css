@@ -1,0 +1,82 @@
+body {
+    color: #202020;
+    margin: 0px auto 0px auto;
+    width: 80%;
+    line-height: 2em;
+}
+
+pre {
+    line-height: 1.1em;
+    padding: 5px;
+    background: #eaeaea;
+}
+
+table th, table td { 
+    padding: 3px;
+    border: solid 1px #eaeaea;
+}
+
+table tr.header {
+    border-bottom: solid 2px black;
+}
+
+table tbody tr.even {
+    background: #eaeaea;
+}
+
+a { color: blue; }
+a:visited { color: #202020; }
+a:hover { background: blue; color: white; }
+
+div#header {
+    border-bottom: 2px solid #202020;
+    margin-bottom: 30px;
+    padding: 12px 5px 12px 5px;
+}
+
+div#image_footer {
+    height: 300px;
+}
+
+div#logo a {
+    float: left;
+    text-decoration: none;
+}
+
+div#header #navigation {
+    text-align: right;
+}
+
+div#header #navigation a {
+    font-weight: bold;
+    font-size: 0.7em;
+    margin-left: 12px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+div#footer {
+    border-top: solid 2px #202020;
+    color: #555;
+    font-size: 0.8em;
+    margin-top: 30px;
+    padding: 12px 0px 12px 0px;
+    text-align: right;
+}
+
+h1 { font-size: 1.5em; }
+h2 { font-size: 1.2em; }
+
+div.info {
+    color: #555;
+    font-size: 14px;
+    font-style: italic;
+}
+
+p { text-align: justify; }
+
+blockquote {
+    border-left: solid 2px #eaeaea;
+    padding-left: 5px;
+    background: #fafafa;
+}

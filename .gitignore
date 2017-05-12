@@ -17,3 +17,5 @@ cabal.sandbox.config
 
 _cache/
 site
+
+.stack-work

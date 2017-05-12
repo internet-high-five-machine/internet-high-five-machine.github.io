@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>The Internet High 5 Machine Blog - Your first Internet High 5 with the uArm Swift!</title>
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+        <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <h1><a href="../">The Internet High 5 Machine Blog!</a></h1>
+            </div>
+            <div id="navigation">
+                <a href="https://high5.cool/">High5 Website</a>
+                <a href="../archive.html">Archive</a>
+                <small><a href="../atom.xml">Atom Feed</a></small>
+            </div>
+        </div>
+
+        <div id="content">
+            <h2>Your first Internet High 5 with the uArm Swift!</h2>
+
+            <div class="info">
+    Posted on May 12, 2017
+    
+        by Noon van der Silk
+    
+</div>
+
+<p>So the wait is finally over! <a href="https://high5.cool">The Internet High 5 Machine website</a> is finally live!</p>
+<p>Currently you can send a High 5 to anyone via their email address. You get the option of writing a short message, and recording a short GIF. They can then receive this High 5 by clicking the link in the email!</p>
+<p>That’s pretty cool.</p>
+<p>But, the Internet High 5 Machine is also about physical interaction with an attached device, and to that end we have added support for the <a href="http://ufactory.cc/#/en/">uArm Swift</a>.</p>
+<p>I picked up one of these in their recent IndieGoGo campaign, and I quickly built an elegant High 5’ing extension:</p>
+<center>
+<img src="../images/uarm-high5-prototype.jpg" />
+</center>
+<p>Then, by playing around with one of the open-source libraries that they provided, I was able to get it to give me a High 5:</p>
+<iframe src="https://player.vimeo.com/video/216588083" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+</iframe>
+<p>Now, if you’re willing to get down and funky with some code, you too can connect your uarm to the Internet High 5 Machine website!</p>
+<h2 id="technical---setup-of-uarm-swift-with-the-high-5-machine-website">Technical - Setup of uArm Swift with the High 5 Machine Website</h2>
+<p>Below we list a somewhat-involved process to connect the uArm to the High 5 website. This process will hopefully get simplier in the coming months as the uFactory company releases updated versions of it’s code and we release more of the High 5 Machine software.</p>
+<p>Firstly, we need to get the program that can perform a High 5.</p>
+<ol style="list-style-type: decimal">
+<li>Clone <a href="https://github.com/silky/pyuarm">uArm-5</a></li>
+</ol>
+<pre><code>&gt; git clone https://github.com/internet-high-five-machine/uArm-5.git</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Create, and activate, a conda environment (or otherwise use python 3.5) and install the the requirements</li>
+</ol>
+<pre><code>&gt; conda create -n uArm-5 python=3.5</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Install the requirements, which is a fork of the official <code>pyuarm</code> library:</li>
+</ol>
+<pre><code>uArm-5&gt; pip install -r requirements.txt</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Clone the <a href="https://github.com/internet-high-five-machine/high5-driver">high5-driver</a> program, which is used to communicate directly with the High 5 website.</li>
+</ol>
+<pre><code>&gt; git clone https://github.com/internet-high-five-machine/high5-driver.git</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Install <a href="https://docs.haskellstack.org/en/stable/README/">stack</a></p></li>
+<li><p>Setup stack to build this project</p></li>
+</ol>
+<pre><code>high5-dirver&gt; stack setup</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>Build the <code>high5-driver</code> project</li>
+</ol>
+<pre><code>high5-dirver&gt; stack build</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li>Point the <code>settings.yaml</code> file at the <code>uarm-5.py</code> executable.</li>
+</ol>
+<pre><code>high5-driver&gt; cat settings.yaml
+exec:
+    machine-command      : [&quot;../uArm-5/uarm-5.py&quot;]</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li><strong>Run</strong> the <code>high5-driver</code> (note: you should be in the conda envirnoment you created earlier, because it will run the python script):</li>
+</ol>
+<pre><code>high5-dirver&gt; stack build</code></pre>
+<ol start="10" style="list-style-type: decimal">
+<li>Send the <code>configure</code> command to the driver, so that it connects to the High 5 website. You’ll find the <code>token</code> on your <a href="https://high5.cool/profile">profile page</a>:</li>
+</ol>
+<pre><code>configure {&quot;server&quot;: &quot;high5.cool&quot;, &quot;url&quot;: &quot;/&quot;, &quot;email&quot;: &quot;noonsilk@gmail.com&quot;, &quot;token&quot;:&quot;your-token-goes-here&quot;}</code></pre>
+<p>You’ll know this worked if it says <code>websocket connected</code>.</p>
+<ol start="11" style="list-style-type: decimal">
+<li><strong>Bask in the joy of receiving Internet High 5s</strong>!</li>
+</ol>
+<p>Once you’ve done the above steps, when you go to receive a High 5 on the website, you will see the “Receive High 5!” button under the “Via your device” option become available.</p>
+<p>Enjoy!</p>
+
+        </div>
+        <div id="footer">
+            <small>Site built with <a href="http://jaspervdj.be/hakyll">Hakyll</a> (<a href="https://github.com/internet-high-five-machine/internet-high-five-machine.github.io">source</a>).
+            </small> 
+        </div>
+        <div id="image_footer">
+            <center>
+                <a href="https://high5.cool"><img src="../images/logo_500.png" /></a>
+            </center>
+        </div>
+    </body>
+</html>
