@@ -51,7 +51,8 @@
 <ol start="2" style="list-style-type: decimal">
 <li>Create, and activate, a conda environment (or otherwise use python 3.5) and install the the requirements</li>
 </ol>
-<pre><code>&gt; conda create -n uArm-5 python=3.5</code></pre>
+<pre><code>&gt; cd uArm-5
+uArm-5&gt; conda create -n uArm-5 python=3.5</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Install the requirements, which is a fork of the official <code>pyuarm</code> library:</li>
 </ol>
@@ -78,7 +79,7 @@ exec:
 <ol start="9" style="list-style-type: decimal">
 <li><strong>Run</strong> the <code>high5-driver</code> (note: you should be in the conda envirnoment you created earlier, because it will run the python script):</li>
 </ol>
-<pre><code>high5-dirver&gt; stack build</code></pre>
+<pre><code>high5-dirver&gt; stack exec -- high5-driver</code></pre>
 <ol start="10" style="list-style-type: decimal">
 <li>Send the <code>configure</code> command to the driver, so that it connects to the High 5 website. You’ll find the <code>token</code> on your <a href="https://high5.cool/profile">profile page</a>:</li>
 </ol>

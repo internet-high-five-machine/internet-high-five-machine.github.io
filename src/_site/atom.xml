@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>silky.github.io</title>
-    <link href="https://silky.github.io/atom.xml" rel="self" />
-    <link href="https://silky.github.io" />
-    <id>https://silky.github.io/atom.xml</id>
+    <title>blog.high5.cool</title>
+    <link href="https://blog.high5.cool/atom.xml" rel="self" />
+    <link href="https://blog.high5.cool" />
+    <id>https://blog.high5.cool/atom.xml</id>
     <author>
         <name>Noon van der Silk</name>
-        <email>noonsilk+-noonsilk@gmail.com</email>
+        <email>noonsilk+-high5-blog@gmail.com</email>
     </author>
     <updated>2017-05-12T00:00:00Z</updated>
     <entry>
     <title>Your first Internet High 5 with the uArm Swift!</title>
-    <link href="https://silky.github.io/posts/2017-05-12-your-first-internet-high-5-with-the-uarm.html" />
-    <id>https://silky.github.io/posts/2017-05-12-your-first-internet-high-5-with-the-uarm.html</id>
+    <link href="https://blog.high5.cool/posts/2017-05-12-your-first-internet-high-5-with-the-uarm.html" />
+    <id>https://blog.high5.cool/posts/2017-05-12-your-first-internet-high-5-with-the-uarm.html</id>
     <published>2017-05-12T00:00:00Z</published>
     <updated>2017-05-12T00:00:00Z</updated>
     <summary type="html"><![CDATA[<div class="info">
@@ -44,7 +44,8 @@
 <ol start="2" style="list-style-type: decimal">
 <li>Create, and activate, a conda environment (or otherwise use python 3.5) and install the the requirements</li>
 </ol>
-<pre><code>&gt; conda create -n uArm-5 python=3.5</code></pre>
+<pre><code>&gt; cd uArm-5
+uArm-5&gt; conda create -n uArm-5 python=3.5</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Install the requirements, which is a fork of the official <code>pyuarm</code> library:</li>
 </ol>
@@ -71,7 +72,7 @@ exec:
 <ol start="9" style="list-style-type: decimal">
 <li><strong>Run</strong> the <code>high5-driver</code> (note: you should be in the conda envirnoment you created earlier, because it will run the python script):</li>
 </ol>
-<pre><code>high5-dirver&gt; stack build</code></pre>
+<pre><code>high5-dirver&gt; stack exec -- high5-driver</code></pre>
 <ol start="10" style="list-style-type: decimal">
 <li>Send the <code>configure</code> command to the driver, so that it connects to the High 5 website. You’ll find the <code>token</code> on your <a href="https://high5.cool/profile">profile page</a>:</li>
 </ol>

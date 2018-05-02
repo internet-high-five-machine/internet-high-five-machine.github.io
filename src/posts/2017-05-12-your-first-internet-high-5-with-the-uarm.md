@@ -51,7 +51,8 @@ Firstly, we need to get the program that can perform a High 5.
    install the the requirements
 
 ```
-> conda create -n uArm-5 python=3.5
+> cd uArm-5
+uArm-5> conda create -n uArm-5 python=3.5
 ```
 
 3. Install the requirements, which is a fork of the official `pyuarm` library:
@@ -94,7 +95,7 @@ exec:
    you created earlier, because it will run the python script):
 
 ```
-high5-dirver> stack build
+high5-dirver> stack exec -- high5-driver
 ```
 
 10. Send the `configure` command to the driver, so that it connects to the
